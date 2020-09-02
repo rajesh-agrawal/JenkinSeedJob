@@ -4,8 +4,8 @@ pipeline{
 	parameters{ 
 	                     string(defaultValue: '462477038196', description: 'Account Number to provision stack', name: 'ACCOUNT_NUMBER', trim: false) 
 			     string(defaultValue: 'jenkins/appslave-jenkins-aws101', description: 'Jenkins role', name: 'ROLE_NAME', trim: false) 
-			     choice(choices: ['deploy', 'delete'], description: '', name: 'OPERATION') 
-			     string(defaultValue: 'aws101', description: 'DO NOT CHANGE THIS, CHANGE IN GROOVY FILE FOR CLASS', name: 'APP_NAME', trim: false)
+			     choice(choices: ['Compile PLSQL', 'Build Jar','Deploy Jar'], description: '', name: 'OPERATION') 
+			     string(defaultValue: 'OEBS_DEPLOYMENT', description: 'DO NOT CHANGE THIS, CHANGE IN GROOVY FILE FOR CLASS', name: 'APP_NAME', trim: false)
 		  }
 	options 
 	{
@@ -32,7 +32,18 @@ pipeline{
 				   FORCE_DELETE=--force_delete
 				fi
 				python --version
-			
+				python -m cloud_common.aws_stack_operation   \\
+				--region us-east-1 \\
+				--role_name $ROLE_NAME  \\
+				--account_number $ACCOUNT_NUMBER \\
+				--operation $OPERATION \\
+				--arch $ARCH_FILE \\
+				--var $VAR_FILE  \\
+				--stack_name $STACK_NAME  \\
+				--config_file $CONFIG_FILE \\
+				--template_url $TEMPLATE_URL  \\
+				--log DEBUG $FORCE_DELETE $USE_EXISTING
+				'''			
   		        }
 		
 		}
