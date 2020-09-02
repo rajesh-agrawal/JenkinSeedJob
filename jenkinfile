@@ -1,0 +1,57 @@
+pipeline{
+	agent { label 'master' }
+	
+	parameters{ 
+	                     string(defaultValue: '462477038196', description: 'Account Number to provision stack', name: 'ACCOUNT_NUMBER', trim: false) 
+			     string(defaultValue: 'jenkins/appslave-jenkins-aws101', description: 'Jenkins role', name: 'ROLE_NAME', trim: false) 
+			     choice(choices: ['deploy', 'delete'], description: '', name: 'OPERATION') 
+			     string(defaultValue: 'aws101', description: 'DO NOT CHANGE THIS, CHANGE IN GROOVY FILE FOR CLASS', name: 'APP_NAME', trim: false)
+		  }
+	options 
+	{
+		buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10')) 
+	}
+	
+	stages {
+		stage('Create S3 stack'){
+		
+		
+			steps {
+			
+			sh label: '', script: '''#!/bin/bash
+				ARCH_FILE=aws-cloudformation/arch-yamls/arch-s3-bucket.j2
+				VAR_FILE=aws-cloudformation/config/aws-itm-training-devl/config-s3-bucket.yml
+				CONFIG_FILE=aws-cloudformation/stack-params/aws-itm-training-devl.config
+				TEMPLATE_URL=aws-itm-training-devl-useast1-floating-system/templates/aws101-s3-bucket.json
+				STACK_NAME=aws101-s3-bucket-stack
+				RE_CREATE=false
+				if [ "$RE_CREATE" = false ]
+				then
+				   FORCE_DELETE=""
+				else
+				   FORCE_DELETE=--force_delete
+				fi
+				python --version
+				python -m cloud_common.aws_stack_operation   \\
+				--region us-east-1 \\
+				--role_name $ROLE_NAME  \\
+				--account_number $ACCOUNT_NUMBER \\
+				--operation $OPERATION \\
+				--arch $ARCH_FILE \\
+				--var $VAR_FILE  \\
+				--stack_name $STACK_NAME  \\
+				--config_file $CONFIG_FILE \\
+				--template_url $TEMPLATE_URL  \\
+				--log DEBUG $FORCE_DELETE $USE_EXISTING
+				'''			
+  		        }
+		
+		}
+	}	
+		
+}
+
+
+
+
+
