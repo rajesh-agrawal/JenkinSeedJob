@@ -29,8 +29,5 @@ node {
         // Static Code analysis (Coverity/ SonarQube /openvas/Nessus etc.)
       }
     }
-   stage('Results') {
-      junit '**/target/surefire-reports/TEST-*.xml'
-      archiveArtifacts 'target/*.jar'
-   }
+ 
 }
