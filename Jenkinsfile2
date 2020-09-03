@@ -1,20 +1,31 @@
 pipeline {
-    agent any 
-    stages {
-        stage('PL/SQL Code Compile') { 
-            steps {
-                // 
-            }
-        }
-        stage('Test') { 
-            steps {
-                // 
-            }
-        }
-        stage('Deploy') { 
-            steps {
-                // 
-            }
-        }
-    }
+   agent any
+
+   stages {
+      stage('Download Github Repo') {
+         steps {
+            echo 'Hello World'
+         }
+      }
+       stage('Compile PLSQL') {
+         steps {
+            echo 'Hello World'
+         }
+      }
+       stage('Build Jar') {
+         steps {
+            echo 'Hello World'
+         }
+      }
+       stage('Deploy Jar') {
+         steps {
+            echo 'Hello World'
+         }
+      }
+       stage('Send Email') {
+         steps {
+            echo 'Hello World'
+         }
+      }
+   }
 }
