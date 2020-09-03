@@ -13,7 +13,7 @@ pipeline{
 	}
 	
 	stages {
-		stage('Create S3 stack'){
+		stage('Compile PL/SQL'){
 		
 		
 			steps {
@@ -31,19 +31,7 @@ pipeline{
 				else
 				   FORCE_DELETE=--force_delete
 				fi
-				python --version
-				python -m cloud_common.aws_stack_operation   \\
-				--region us-east-1 \\
-				--role_name $ROLE_NAME  \\
-				--account_number $ACCOUNT_NUMBER \\
-				--operation $OPERATION \\
-				--arch $ARCH_FILE \\
-				--var $VAR_FILE  \\
-				--stack_name $STACK_NAME  \\
-				--config_file $CONFIG_FILE \\
-				--template_url $TEMPLATE_URL  \\
-				--log DEBUG $FORCE_DELETE $USE_EXISTING
-				'''			
+				
   		        }
 		
 		}
