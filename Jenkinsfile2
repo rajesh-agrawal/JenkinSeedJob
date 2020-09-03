@@ -12,21 +12,20 @@ node {
    }
    stage('Build Jar') {
       steps {
-        // build, build stages can be made in parallel aswell
-        // build stage can call other stages
-        // can trigger other jenkins pipelines and copy artifact from that pipeline
+
+       echo 'BuildJar'
       }
     }
 
     stage('Test') {
       steps {
-        // Test (Unit test / Automation test(Selenium/Robot framework) / etc.)
+        echo 'Test'
       }
     }
 
     stage('Code Analysis') {
       steps {
-        // Static Code analysis (Coverity/ SonarQube /openvas/Nessus etc.)
+        echo 'Code Analysis'
       }
     }
  
