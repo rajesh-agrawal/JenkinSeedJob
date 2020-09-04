@@ -1,4 +1,4 @@
 // Jenkinsfile
 @Library('my-shared-library') _
-
-evenOrOdd(currentBuild.getNumber())
+def testJob=org.util.createTestJob()
+testJob.evenOrOdd(currentBuild.getNumber())

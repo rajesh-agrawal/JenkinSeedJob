@@ -1,4 +1,6 @@
-// vars/evenOrOdd.groovy
+// vars/createTestJob.groovy
+package org.util
+
 def call(int buildNumber) {
   if (buildNumber % 2 == 0) {
     pipeline {
