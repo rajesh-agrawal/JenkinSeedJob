@@ -1,0 +1,20 @@
+pipeline {
+    agent any 
+    stages {
+        stage('Build FrontEnd') { 
+            steps {
+                // 
+            }
+        }
+        stage('Test FrontEnd') { 
+            steps {
+                // 
+            }
+        }
+        stage('Deploy FrontEnd') { 
+            steps {
+                // 
+            }
+        }
+    }
+}
