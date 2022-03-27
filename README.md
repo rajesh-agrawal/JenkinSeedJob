@@ -1,4 +1,12 @@
 ## Jenkins Seed Jobs
+
+## Problem that needs to be solved
+I have 2 Jenkin jobs which does deployment for frontend and backend
+[JenkinFileBackend](pipeline/JenkinFileBackend) 
+[JenkinFileFrontend](pipeline/JenkinFileFrontend) 
+Task is to create these jobs using a seed job which allows developers to restore all the pipelines if Jenkin node is down and with minimal Jenkins knowledge
+
+
 ##  Generated after lot of brainstroming and experimentation
 
 Hi, I am not a native Jenkins expert and Jenkin pipelines seem to be easy at the start but when you want to implement DevOps in the most right manner, there are some challenges
