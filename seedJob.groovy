@@ -1,18 +1,24 @@
 pipelineJob('Backend_Job') {
    
   definition {
-    cps {
-            script(readFileFromWorkspace('pipeline/JenkinFileBackend'))
-            sandbox()
+     cpsScm {
+            scm {
+                git('https://github.com/rajesh-agrawal/JenkinSeedJob.git')
+            }
+            scriptPath('pipeline/JenkinFileBackend')
+            
         }
     }
 }
 pipelineJob('Frontend_Job') {
    
   definition {
-    cps {
-            script(readFileFromWorkspace('pipeline/JenkinFileFrontEnd'))
-            sandbox()
+     cpsScm {
+            scm {
+                git('https://github.com/rajesh-agrawal/JenkinSeedJob.git')
+            }
+            scriptPath('pipeline/JenkinFileFrontend')
+            
         }
     }
 }
