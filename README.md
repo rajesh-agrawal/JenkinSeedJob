@@ -2,8 +2,8 @@
 
 ## Problem that needs to be solved
 I have 2 Jenkin jobs which does deployment for frontend and backend
-[JenkinFileBackend](pipeline/JenkinFileBackend) 
-[JenkinFileFrontend](pipeline/JenkinFileFrontend) 
+[X] [JenkinFileBackend](pipeline/JenkinFileBackend) 
+[X] [JenkinFileFrontend](pipeline/JenkinFileFrontend) 
 Task is to create these jobs using a seed job which allows developers to restore all the pipelines if Jenkin node is down and with minimal Jenkins knowledge
 
 
